@@ -354,12 +354,21 @@ section h2 {
   margin: 0 auto;
 }
 
+/*
+ * Each education entry now uses a flexible layout to accommodate
+ * institution logos.  By setting display:flex and aligning items
+ * to the start, the logo appears to the left of the text.  A small
+ * gap creates breathing room between the image and the content.
+ */
 .education-item {
   background-color: #fff;
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
   margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .education-item h3 {
@@ -378,6 +387,27 @@ section h2 {
   margin-top: 0.5rem;
 }
 
+/* Logo within each education item.  The logo size is constrained
+ * to maintain consistent alignment across different screen sizes.
+ */
+.education-logo {
+  width: 60px;
+  height: auto;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  /* On very small screens stack the logo above the text */
+  .education-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .education-logo {
+    margin-bottom: 0.5rem;
+  }
+}
+
 /* Contact form */
 .contact-form {
   max-width: 600px;
@@ -392,7 +422,7 @@ section h2 {
   margin-bottom: 1rem;
 }
 
-.contact-form label {
+contact-form label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -409,12 +439,12 @@ section h2 {
   background-color: #fdfdfd;
 }
 
-.contact-form textarea {
+contact-form textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-.contact-form button {
+contact-form button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: var(--primary);
@@ -427,7 +457,7 @@ section h2 {
   transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.contact-form button:hover {
+contact-form button:hover {
   /* Slightly darker blue with a subtle lift on hover */
   background-color: #005bb5;
   transform: translateY(-2px);
