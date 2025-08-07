@@ -348,6 +348,11 @@ section h2 {
   display: none;
 }
 
+/* Hide the “Read more…” text when the project details are open */
+.project-card details[open] > summary {
+  display: none;
+}
+
 /* Education */
 .education-list {
   max-width: 900px;
